@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { FormBuilder } from '@angular/forms';
 
 import {  AuthService } from './../services/auth.service'
 
@@ -8,19 +9,33 @@ import {  AuthService } from './../services/auth.service'
   styleUrls: ['./sign-up.component.css']
 })
 export class SignUpComponent implements OnInit {
-
-  constructor(authService: AuthService) { }
+  signUpForm
+  constructor(private authService: AuthService, private formBuilder: FormBuilder) {
+    this.signUpForm = this.formBuilder.group({
+      email: '',
+      password: '',
+      password_confirmation: ''
+    })
+  }
 
   ngOnInit(): void {
   }
 
   signUp(userData){
-    this.authService.onSignUp(userData)
+    console.log(userData.email)
+    let credentials = {
+      email: userData.email,
+      password: userData.password,
+      password_confirmation: userData.password_confirmation
+    }
+    console.log(credentials)
+
+    this.authService.onSignUp({credentials})
       .subscribe(response => {
-        this.user = response
-        console.log(this.user)
+        console.log(response)
         window.alert("You signed up successfully")
       })
+    this.signUpForm.reset()
   }
 
 }
