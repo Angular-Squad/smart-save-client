@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder } from '@angular/forms';
+import { Router } from '@angular/router';
 
 import {  AuthService } from './../services/auth.service'
 
@@ -13,7 +14,8 @@ export class SignInComponent implements OnInit {
   signinForm
   constructor(
     private authService: AuthService,
-    private formBuilder: FormBuilder
+    private formBuilder: FormBuilder,
+    private router: Router
   ) {
     this.signInForm = this.formBuilder.group({
       email: '',
@@ -34,9 +36,18 @@ export class SignInComponent implements OnInit {
     this.authService.onSignIn({credentials})
       .subscribe(response => {
         console.log(response)
+        if(response){
+          this.router.navigate(['/'])
+        }else{
+          // throw an error
+        }
+        if(response.token){
+          localStorage.setItem('token', response.token)
+        }
         window.alert("You signed in successfully")
       })
 
     this.signInForm.reset()
+    console.log('this is local storage', localStorage)
   }
 }
