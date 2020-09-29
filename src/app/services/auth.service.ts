@@ -6,7 +6,7 @@ import { HttpClient } from '@angular/common/http';
   providedIn: 'root'
 })
 export class AuthService {
-  url = 'https://warm-woodland-06371.herokuapp.com'
+  url = 'https://tic-tac-toe-wdi-production.herokuapp.com'
   constructor(private http: HttpClient) {
     // this.signUpForm = this.formBuilder.group({
     //   email: '',
@@ -16,7 +16,12 @@ export class AuthService {
   }
 
   onSignUp(credentials){
-  // sign in the user
-  return this.http.post(this.url + "/sign-up", credentials)
+    // sign in the user
+    return this.http.post(this.url + "/sign-up", credentials)
+  }
+
+  onSignIn(credentials){
+    // sign in the user
+    return this.http.post(this.url + "/sign-in", credentials)
   }
 }

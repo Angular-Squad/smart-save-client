@@ -8,6 +8,7 @@ import {  AuthService } from './../services/auth.service'
   templateUrl: './sign-up.component.html',
   styleUrls: ['./sign-up.component.css']
 })
+
 export class SignUpComponent implements OnInit {
   signUpForm
   constructor(private authService: AuthService, private formBuilder: FormBuilder) {
@@ -37,5 +38,4 @@ export class SignUpComponent implements OnInit {
       })
     this.signUpForm.reset()
   }
-
 }

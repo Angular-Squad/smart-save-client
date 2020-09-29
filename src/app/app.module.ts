@@ -9,13 +9,15 @@ import { AppComponent } from './app.component';
 import { SignUpComponent } from './sign-up/sign-up.component';
 import { NavBarComponent } from './nav-bar/nav-bar.component';
 import { HomeComponent } from './home/home.component';
+import { SignInComponent } from './sign-in/sign-in.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     SignUpComponent,
     NavBarComponent,
-    HomeComponent
+    HomeComponent,
+    SignInComponent
   ],
   imports: [
     BrowserModule,
@@ -24,7 +26,8 @@ import { HomeComponent } from './home/home.component';
     ReactiveFormsModule,
     RouterModule.forRoot([
       { path: 'sign-up', component: SignUpComponent},
-      { path: '', component: HomeComponent}
+      { path: '', component: HomeComponent},
+      { path: 'sign-in', component: SignInComponent}
 ])
   ],
   providers: [],
