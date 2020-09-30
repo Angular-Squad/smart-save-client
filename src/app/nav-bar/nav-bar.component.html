@@ -1,3 +1,4 @@
+
 <a [routerLink]="['sign-up']">
   <h2>Sign Up</h2>
 </a>
@@ -13,4 +14,8 @@
 
 <a [routerLink]="['']">
   <h2>Home</h2>
+</a>
+
+<a (click)="signOut()" [routerLink]="['']">
+  <h2>Sign Out</h2>
 </a>

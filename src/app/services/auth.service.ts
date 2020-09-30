@@ -32,4 +32,16 @@ export class AuthService {
         }
       })
   }
+
+  onSignOut(){
+    return this.http.delete(this.url + "/sign-out", {
+        headers: {
+          Authorization: 'Token token=' + localStorage.token
+        }
+      })
+      .subscribe(() => {
+        localStorage.removeItem('token')
+        console.log(localStorage)
+      })
+  }
 }
