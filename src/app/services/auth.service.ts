@@ -24,4 +24,12 @@ export class AuthService {
     // sign in the user
     return this.http.post(this.url + "/sign-in", credentials)
   }
+
+  onChangePassword(passwords){
+    return this.http.patch(this.url + "/change-password", passwords, {
+        headers: {
+          Authorization: 'Token token=' + localStorage.token
+        }
+      })
+  }
 }

@@ -10,6 +10,7 @@ import { SignUpComponent } from './sign-up/sign-up.component';
 import { NavBarComponent } from './nav-bar/nav-bar.component';
 import { HomeComponent } from './home/home.component';
 import { SignInComponent } from './sign-in/sign-in.component';
+import { ChangePasswordComponent } from './change-password/change-password.component';
 
 @NgModule({
   declarations: [
@@ -17,7 +18,8 @@ import { SignInComponent } from './sign-in/sign-in.component';
     SignUpComponent,
     NavBarComponent,
     HomeComponent,
-    SignInComponent
+    SignInComponent,
+    ChangePasswordComponent
   ],
   imports: [
     BrowserModule,
@@ -27,7 +29,8 @@ import { SignInComponent } from './sign-in/sign-in.component';
     RouterModule.forRoot([
       { path: 'sign-up', component: SignUpComponent},
       { path: '', component: HomeComponent},
-      { path: 'sign-in', component: SignInComponent}
+      { path: 'sign-in', component: SignInComponent},
+      { path: 'change-pw', component: ChangePasswordComponent},
 ])
   ],
   providers: [],
