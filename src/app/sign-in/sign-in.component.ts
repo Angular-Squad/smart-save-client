@@ -11,7 +11,7 @@ import {  AuthService } from './../services/auth.service'
 })
 
 export class SignInComponent implements OnInit {
-  signInForm
+  signInForm:any
   constructor(
     private authService: AuthService,
     private formBuilder: FormBuilder,
@@ -35,15 +35,15 @@ export class SignInComponent implements OnInit {
 
     this.authService.onSignIn({credentials})
       .subscribe(response => {
-        console.log("this is the response.user.token", response.user.token)
-        if(response.user.token){
-          localStorage.setItem('token', response.user.token)
+        console.log("this is the response.user.token", response['user'].token)
+        if(response['user'].token){
+          localStorage.setItem('token', response['user'].token)
         }
-        // if(response){
-        //   this.router.navigate(['/'])
-        // }else{
-        //   // throw an error
-        // }
+        if(response){
+          this.router.navigate(['/'])
+        }else{
+          // throw an error
+        }
         // this.router.navigate(['/'])
         window.alert("You signed in successfully")
       })
