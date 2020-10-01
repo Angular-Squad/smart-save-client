@@ -38,11 +38,7 @@ export class SignInComponent implements OnInit {
         console.log("this is the response.user.token", response['user'].token)
         if(response['user'].token){
           localStorage.setItem('token', response['user'].token)
-        }
-        if(response){
           this.router.navigate(['/'])
-        }else{
-          // throw an error
         }
         // this.router.navigate(['/'])
         window.alert("You signed in successfully")

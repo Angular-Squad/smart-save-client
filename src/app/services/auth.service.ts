@@ -7,6 +7,7 @@ import { HttpClient } from '@angular/common/http';
 })
 export class AuthService {
   url = 'https://tic-tac-toe-wdi-production.herokuapp.com'
+  isLogged
   constructor(private http: HttpClient) {
     // this.signUpForm = this.formBuilder.group({
     //   email: '',
@@ -43,5 +44,13 @@ export class AuthService {
         localStorage.removeItem('token')
         console.log(localStorage)
       })
+  }
+
+  isLoggedIn(){
+    if(localStorage.token){
+      return true
+    }else{
+      return false
+    }
   }
 }
