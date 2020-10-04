@@ -1,30 +1,32 @@
 import { Injectable } from '@angular/core';
-import { FormBuilder } from '@angular/forms';
+import { FormBuilder, FormGroup } from '@angular/forms';
 import { HttpClient } from '@angular/common/http';
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
-  url = 'https://stark-dawn-63091.herokuapp.com'
-  constructor(private formBuilder: FormBuilder, private http: HttpClient) {
-    this.signUpForm = this.formBuilder.group({
+  private url = 'https://stark-dawn-63091.herokuapp.com'
+  signUpForm: FormGroup;
+  
+  constructor(formBuilder: FormBuilder, private http: HttpClient) {
+    this.signUpForm = formBuilder.group({
       email: '',
       password: '',
       password_confirmation: ''
     })
   }
 
-  onSignUp(userData){
+  onSignUp(userData): Observable<any>{
   // sign in the user
-  this.http.post<any>(
-    this.url + "/sign-up/",
+   return this.http.post(this.url + "/sign-up",
      { credentials: {
         email: userData.email,
         password: userData.password,
         password_confirmation: userData.password_confirmation
       }
-     })
+     });
   this.signUpForm.reset()
 }
 }
